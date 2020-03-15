@@ -4,6 +4,7 @@ import com.visconde.survivorhero.model.Board;
 import com.visconde.survivorhero.model.Position;
 
 public enum Action implements Moveable{
+
     UP{
         @Override
         public void move(Board board) {
@@ -14,6 +15,7 @@ public enum Action implements Moveable{
             //TODO - Lógica da colisão
         }
     },
+
     DOWN {
         @Override
         public void move(Board board) {
@@ -24,6 +26,7 @@ public enum Action implements Moveable{
             //TODO - Lógica da colisão
         }
     },
+
     RIGHT {
         @Override
         public void move(Board board) {
@@ -34,6 +37,7 @@ public enum Action implements Moveable{
             //TODO - Lógica da colisão
         }
     },
+
     LEFT {
         @Override
         public void move(Board board) {
@@ -44,4 +48,5 @@ public enum Action implements Moveable{
             //TODO - Lógica da colisão
         }
     };
+
 }

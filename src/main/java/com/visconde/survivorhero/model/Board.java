@@ -14,6 +14,7 @@ public class Board {
     private char[][] board;
     private Integer totaLines;
     private Integer totalColumns;
+    private boolean crashed;
 
     public void startGame() {
         Random random = new Random();
@@ -64,4 +65,11 @@ public class Board {
         return villainSize;
     }
 
+    public boolean isCrashed() {
+        return crashed;
+    }
+
+    public void setCrashed(boolean crashed) {
+        this.crashed = crashed;
+    }
 }
