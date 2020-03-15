@@ -1,19 +1,15 @@
 package com.visconde.survivorhero.model;
 
-import com.visconde.survivorhero.enums.Action;
-
-import java.util.Arrays;
-import java.util.List;
 import java.util.Objects;
 import java.util.Random;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+
+import static java.lang.Math.abs;
 
 public class Board {
 
     public static final char HERO = 'H';
     public static final char VILLAIN = 'V';
+    public static final int MAX_SIZE = 10000;
 
     private char[][] board;
     private Integer totaLines;
@@ -21,8 +17,8 @@ public class Board {
 
     public void startGame() {
         Random random = new Random();
-        Position heroPosition = new Position(random.nextInt(), random.nextInt());
-        Position villainPosition = new Position(random.nextInt(), random.nextInt());
+        Position heroPosition = new Position(abs(random.nextInt(MAX_SIZE)), abs(random.nextInt(MAX_SIZE)));
+        Position villainPosition = new Position(abs(random.nextInt(MAX_SIZE)), abs(random.nextInt(MAX_SIZE)));
         this.setBoard(heroPosition, villainPosition);
     }
 
@@ -57,6 +53,8 @@ public class Board {
         this.totaLines = defineSize(heroPosition.getLine(), villainPosition.getLine());
         this.totalColumns = defineSize(heroPosition.getColumn(), villainPosition.getColumn());
         this.board = new char[totaLines][totalColumns];
+        board[heroPosition.getLine() - 1][heroPosition.getColumn() - 1] = HERO;
+        board[villainPosition.getLine() -1 ][villainPosition.getColumn() - 1] = VILLAIN;
     }
 
     private int defineSize(int heroSize, int villainSize) {
