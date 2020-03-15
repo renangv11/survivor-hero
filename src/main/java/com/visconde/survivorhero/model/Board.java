@@ -5,6 +5,7 @@ import com.visconde.survivorhero.enums.Action;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -17,6 +18,13 @@ public class Board {
     private char[][] board;
     private Integer totaLines;
     private Integer totalColumns;
+
+    public void startGame() {
+        Random random = new Random();
+        Position heroPosition = new Position(random.nextInt(), random.nextInt());
+        Position villainPosition = new Position(random.nextInt(), random.nextInt());
+        this.setBoard(heroPosition, villainPosition);
+    }
 
     public Position getPosition(char character){
         //TODO método a ser otimizado
@@ -42,7 +50,7 @@ public class Board {
         board[newPosition.getLine()][newPosition.getColumn()] = character;
     }
 
-    public void setBoard(Position heroPosition, Position villainPosition) {
+    private void setBoard(Position heroPosition, Position villainPosition) {
         if(Objects.nonNull(this.board)){
             throw new RuntimeException("Tabuleiro do jogo já foi gerado.");
         }
